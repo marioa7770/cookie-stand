@@ -1,6 +1,6 @@
 'use strict';
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
-let dataSection = document.querySelector('body div')
+let dataSection = document.querySelector('body div') //querySelector() The Document method querySelector() returns the first Element within the document that matches the specified selector, or group of selectors
 function StoreLocation(name, min, max, avg){
     this.name = name
     this.min = min
