@@ -100,8 +100,9 @@ ul {
 }
 
 ol {
-    list-style-position: inside
+    list-style-position: inside;
     list-style: decimal;
     padding: 1rem;
     margin-left: 1rem;
 }
+
