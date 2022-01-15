@@ -1,11 +1,17 @@
 'use strict';
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-let dataSection = document.querySelector('body div'); //querySelector() The Document method querySelector() returns the first Element within the document that matches the specified selector, or group of selectors
+let dataSection = document.querySelector('body div');
+const storeTable = document.querySelector('table tbody');
+console.log(storeTable);
+
 function StoreLocation(name, min, max, avg) {
   this.name = name;
   this.min = min;
   this.max = max;
   this.avg = avg;
+  this.total = 0;
+  this.cookiesEachHour = [];
+
   this.getRandomCustomers = function () {
     return Math.floor(Math.random() * (this.max - this.
       min + 1) + this.min);
@@ -36,7 +42,15 @@ function StoreLocation(name, min, max, avg) {
     let li = ul.appendChild(document.createElement('li'));
     li.textContent = `total = ${this.total}`;
   };
+
 }
+
+
+
+
+
+
+
 
 let seattle = new StoreLocation('Seattle', 23, 65, 6.3);
 seattle.render();
@@ -54,15 +68,83 @@ paris.render();
 let lima = new StoreLocation('Lima', 2, 16, 4.6);
 lima.render();
 
+StoreLocation.prototype.renderTableRow = function () {
+  let tr = document.createElement('tr');
+  let tdName = document.createElement('td');
+  tdName.textContent = this.name;
+  tr.appendChild(tdName);
+  storeTable.appendChild(tr);
+  for (let i = 0; i < this.cookiesEachHour.length; i++) {
+    console.log('hi');
+    let tdName = document.createElement('td');
+    tdName.textContent = this.cookiesEachHour[i];
+    tr.appendChild(tdName);
+    //td.textContent = this.cookiesThisHour[0]
+  }
+  tdName = document.createElement('td');
+  tdName.textContent = this.total;
+  tr.appendChild(tdName);
+};
+seattle.renderTableRow();
 
-console.log(seattle.getRandomCustomers());
+// tokyo.renderTableRow = function () {
+//   let tr = document.createElement('tr');
+//   storeTable.appendChild(tr);
+//   for (let i = 0; i < this.cookiesEachHour.length; i++) {
+//     console.log('hi');
+//     let tdName = document.createElement('td');
+//     tdName.textContent = this.name;
+//     tr.appendChild(tdName);
+//     //td.textContent = this.cookiesThisHour[0]
+//   }
+// };
 
-// let seattle = {
-//     name: 'Seattle',
-//     min: 23,
-//     max: 65,
-//     avg: 6.3,
-//     render: function(){
+tokyo.renderTableRow();
 
-//     }
-// }
+// dubai.renderTableRow = function () {
+//   let tr = document.createElement('tr');
+//   storeTable.appendChild(tr);
+//   for (let i = 0; i < this.cookiesEachHour.length; i++) {
+//     console.log('hi');
+//     let tdName = document.createElement('td');
+//     tdName.textContent = this.name;
+//     tr.appendChild(tdName);
+//     //td.textContent = this.cookiesThisHour[0]
+//   }
+// };
+dubai.renderTableRow();
+
+// paris.renderTableRow = function () {
+//   let tr = document.createElement('tr');
+//   storeTable.appendChild(tr);
+//   for (let i = 0; i < this.cookiesEachHour.length; i++) {
+//     console.log('hi');
+//     let tdName = document.createElement('td');
+//     tdName.textContent = this.name;
+//     tr.appendChild(tdName);
+//     //td.textContent = this.cookiesThisHour[0]
+//   }
+// };
+paris.renderTableRow();
+
+// lima.renderTableRow = function () {
+//   let tr = document.createElement('tr');
+//   storeTable.appendChild(tr);
+//   for (let i = 0; i < this.cookiesEachHour.length; i++) {
+//     console.log('hi');
+//     let tdName = document.createElement('td');
+//     tdName.textContent = this.name;
+//     tr.appendChild(tdName);
+//     //td.textContent = this.cookiesThisHour[0]
+//   }
+// };
+lima.renderTableRow();
+
+
+
+
+
+
+
+
+
